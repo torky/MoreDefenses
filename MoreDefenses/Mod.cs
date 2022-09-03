@@ -35,7 +35,7 @@ namespace MoreDefenses
 
     private readonly Dictionary<string, AssetBundle> m_assetBundles = new Dictionary<string, AssetBundle>();
 
-    private void Awake()
+    public void Awake()
     {
       TurretVolume = Config.Bind("General", "Turret Volume", 100, new ConfigDescription("Independent turret volume control.", new AcceptableValueRange<int>(0, 100)));
 
@@ -93,7 +93,7 @@ namespace MoreDefenses
           var turretPiece = TurretConfig.Convert(prefab, turretConfig);
 
           // Jotunn code is currently not setting the description, potentially a bug
-          //turretPiece.Piece.m_description = turretConfig.description;
+          turretPiece.Piece.m_description = turretConfig.description;
 
           PieceManager.Instance.AddPiece(turretPiece);
         }

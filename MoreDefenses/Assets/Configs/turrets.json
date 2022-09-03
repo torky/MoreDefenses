@@ -8,7 +8,7 @@
     "enabled": true,
     "type": "Projectile",
     "fireInterval": 2,
-    "pierceDamage": 50,
+    "pierceDamage": 20,
     "range": 20,
     "canShootFlying": true,
     "resources": [

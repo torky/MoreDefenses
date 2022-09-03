@@ -13,7 +13,7 @@ public class ProjectileParticle : MonoBehaviour
     //    m_particleSystem = GetComponent<ParticleSystem>();
     //}
 
-    private void OnParticleCollision(GameObject other)
+    public void OnParticleCollision(GameObject other)
     {
         //var events = m_particleSystem.GetCollisionEvents(other, m_particleCollisionEvents);
 
@@ -22,7 +22,7 @@ public class ProjectileParticle : MonoBehaviour
 
         //}
 
-        if (other.TryGetComponent(out Character character) && SourceTurret.IsOwner() && character.m_faction != Character.Faction.Players && !character.IsTamed() && !character.IsDead())
+        if (other.TryGetComponent(out Character character) && SourceTurret.IsOwner() && !character.IsDead())
         {
             character.Damage(HitData);
         }
