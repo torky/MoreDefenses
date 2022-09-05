@@ -77,6 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Scripts\TeamsCommand.cs" />
+    <Compile Include="Services\TeamConfigManager.cs" />
+    <Compile Include="TeamsMod.cs" />
     <Compile Include="Models\TurretConfig.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
     <Compile Include="Mod.cs" />
@@ -89,6 +92,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Assets\AssetBundles\turrets" />
+    <None Include="Assets\TeamConfigs\teams.json" />
     <None Include="Assets\Configs\turrets.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
