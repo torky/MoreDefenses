@@ -8,17 +8,17 @@
     "enabled": true,
     "type": "Projectile",
     "fireInterval": 2,
-    "pierceDamage": 20,
-    "range": 20,
+    "pierceDamage": 45,
+    "range": 30,
     "canShootFlying": true,
     "resources": [
       {
         "item": "Bronze",
-        "amount": 20
+        "amount": 10
       },
       {
         "item": "FineWood",
-        "amount": 20
+        "amount": 10
       }
     ]
   },
@@ -31,17 +31,17 @@
     "enabled": true,
     "type": "Gun",
     "fireInterval": 1,
-    "damage": 25,
-    "range": 20,
+    "damage": 20,
+    "range": 15,
     "canShootFlying": true,
     "resources": [
       {
         "item": "Iron",
-        "amount": 20
+        "amount": 10
       },
       {
         "item": "SurtlingCore",
-        "amount": 5
+        "amount": 3
       }
     ]
   },
@@ -54,18 +54,18 @@
     "enabled": true,
     "type": "Cannon",
     "fireInterval": 3,
-    "frostDamage": 25,
+    "frostDamage": 85,
     "range": 20,
     "damageRadius": 4,
     "canShootFlying": false,
     "resources": [
       {
         "item": "Silver",
-        "amount": 20
+        "amount": 10
       },
       {
         "item": "FreezeGland",
-        "amount": 10
+        "amount": 1
       }
     ]
   },
@@ -78,14 +78,14 @@
     "enabled": true,
     "type": "Flamethrower",
     "fireInterval": 1,
-    "fireDamage": 25,
+    "fireDamage": 65,
     "range": 10,
     "canShootFlying": true,
     "isContinuous": true,
     "resources": [
       {
-        "item": "Turnip",
-        "amount": 1
+        "item": "Iron",
+        "amount": 5
       },
       {
         "item": "Resin",

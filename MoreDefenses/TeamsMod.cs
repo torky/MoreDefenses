@@ -4,19 +4,9 @@
 // File:    MoreDefenses.cs
 // Project: MoreDefenses
 
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using BepInEx;
-using BepInEx.Configuration;
 using HarmonyLib;
-using Jotunn.Entities;
-using Jotunn.Managers;
-using Jotunn.Utils;
-using MoreDefenses.Models;
-using MoreDefenses.Scripts;
-using MoreDefenses.Services;
-using UnityEngine;
 
 namespace MoreDefenses
 {
@@ -35,7 +25,6 @@ namespace MoreDefenses
 
         public void Awake()
         {
-            CommandManager.Instance.AddConsoleCommand(new TeamsCommand());
             m_harmony.PatchAll();
         }
 

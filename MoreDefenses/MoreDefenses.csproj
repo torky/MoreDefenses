@@ -77,8 +77,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Scripts\TeamsCommand.cs" />
-    <Compile Include="Services\TeamConfigManager.cs" />
+    <Compile Include="MapInvisibilityMod.cs" />
+    <Compile Include="Scripts\SE_MapInvisibility.cs" />
     <Compile Include="TeamsMod.cs" />
     <Compile Include="Models\TurretConfig.cs" />
     <Compile Include="Properties\IgnoreAccessModifiers.cs" />
@@ -92,12 +92,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Assets\AssetBundles\turrets" />
-    <None Include="Assets\TeamConfigs\teams.json" />
     <None Include="Assets\Configs\turrets.json" />
     <None Include="packages.config" />
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Assets\TeamConfigs\" />
     <Folder Include="Package\plugins\" />
     <Folder Include="Patches\" />
   </ItemGroup>
@@ -105,6 +105,8 @@
     <None Include="Package\manifest.json" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\reee.png" />
+    <Content Include="Assets\Icons\reeeDisabled.png" />
     <Content Include="Package\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
