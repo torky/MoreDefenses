@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using MoreDefenses;
 using MoreDefenses.Models;
+using MoreDefenses.Scripts;
 using UnityEngine;
 
 public class Turret : MonoBehaviour, Hoverable, Interactable
@@ -237,12 +238,20 @@ public class Turret : MonoBehaviour, Hoverable, Interactable
         foreach (Character character in allCharacters)
         {
             var isPlayer = character.m_faction == Character.Faction.Players;
+            var isViablePlayerTarget = false;
             if (isPlayer)
             {
                 Jotunn.Logger.LogDebug($"Player?! {character.m_name}");
+                Player player = character as Player;
+                Player creator = Player.GetPlayer(m_piece.GetCreator());
+
+                bool isPermitted = IsPermitted(player.GetPlayerID());
+                bool isCreator = player.GetPlayerID() == m_piece.GetCreator();
+                bool isSameTeam = Teams.IsSameTeam(player.GetPlayerName(), creator.GetPlayerName());
+                isViablePlayerTarget = !isPermitted && !isCreator && !isSameTeam;
             }
             if (
-                (!isPlayer || !IsPermitted((character as Player).GetPlayerID()) && (character as Player).GetPlayerID() != m_piece.GetCreator())
+                (!isPlayer || isViablePlayerTarget)
                 && (CanShootFlying || !character.IsFlying())
                 && !character.IsTamed()
                 && !character.IsDead()
@@ -337,30 +346,31 @@ public class Turret : MonoBehaviour, Hoverable, Interactable
             return "";
         }
         StringBuilder stringBuilder = new StringBuilder(256);
+        string ownerText = "\n$piece_guardstone_owner:" + GetCreatorName() + " -> Team " + Teams.GetPlayerTeam(GetCreatorName());
         if (m_piece.IsCreator())
         {
             if (IsEnabled())
             {
                 stringBuilder.Append(m_name + " ( $piece_guardstone_active )");
-                stringBuilder.Append("\n$piece_guardstone_owner:" + GetCreatorName());
+                stringBuilder.Append(ownerText);
                 stringBuilder.Append("\n[<color=yellow><b>$KEY_Use</b></color>] $piece_guardstone_deactivate");
             }
             else
             {
                 stringBuilder.Append(m_name + " ( $piece_guardstone_inactive )");
-                stringBuilder.Append("\n$piece_guardstone_owner:" + GetCreatorName());
+                stringBuilder.Append(ownerText);
                 stringBuilder.Append("\n[<color=yellow><b>$KEY_Use</b></color>] $piece_guardstone_activate");
             }
         }
         else if (IsEnabled())
         {
             stringBuilder.Append(m_name + " ( $piece_guardstone_active )");
-            stringBuilder.Append("\n$piece_guardstone_owner:" + GetCreatorName());
+            stringBuilder.Append(ownerText);
         }
         else
         {
             stringBuilder.Append(m_name + " ( $piece_guardstone_inactive )");
-            stringBuilder.Append("\n$piece_guardstone_owner:" + GetCreatorName());
+            stringBuilder.Append(ownerText);
             if (IsPermitted(Player.m_localPlayer.GetPlayerID()))
             {
                 stringBuilder.Append("\n[<color=yellow><b>$KEY_Use</b></color>] $piece_guardstone_remove");
