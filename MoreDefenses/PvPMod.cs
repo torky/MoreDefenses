@@ -12,18 +12,19 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using Jotunn;
 using Jotunn.Managers;
+using Jotunn.Utils;
 using MoreDefenses.Scripts;
 
 namespace MoreDefenses
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInProcess("valheim.exe")]
-    //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class PvPMod : BaseUnityPlugin
     {
         public const string PluginGUID = "torky.PvP";
         public const string PluginName = "PvP";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.2.0";
 
         public static string ModLocation = Path.GetDirectoryName(typeof(PvPMod).Assembly.Location);
 
@@ -81,7 +82,7 @@ namespace MoreDefenses
 
                 if (!hit.m_ranged)
                 {
-                    hit.ApplyModifier(1.6f);
+                    hit.ApplyModifier(1.4f);
                 }
 
                 if (cantDamage)
@@ -89,6 +90,11 @@ namespace MoreDefenses
                     // hit.ApplyModifier(0);
                     Jotunn.Logger.LogInfo("Friendly Fire!");
                 }
+            }
+
+            static void Postfix(HitData hit)
+            {
+                Jotunn.Logger.LogDebug("TotalDmg:" + hit.GetTotalDamage() + ", TotalPhys:" + hit.GetTotalPhysicalDamage() + ", TotalBlockable: " + hit.GetTotalBlockableDamage());
             }
         }
     }

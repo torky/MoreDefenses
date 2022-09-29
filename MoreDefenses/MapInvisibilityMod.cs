@@ -17,13 +17,13 @@ namespace MoreDefenses
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInDependency(Jotunn.Main.ModGuid)]
-    //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class MapInvisibilityMod : BaseUnityPlugin
     {
         public const string PluginGUID = "torky.MapInvisibility";
         public const string PluginName = "Map Invisibility Ability";
         public const string PluginNameCooldown = "Map Invisibility Ability Cooldown";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.2.0";
 
         public static string ModLocation = Path.GetDirectoryName(typeof(MapInvisibilityMod).Assembly.Location);
 

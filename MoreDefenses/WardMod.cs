@@ -12,18 +12,19 @@ using BepInEx.Configuration;
 using HarmonyLib;
 using Jotunn;
 using Jotunn.Managers;
+using Jotunn.Utils;
 using MoreDefenses.Scripts;
 
 namespace MoreDefenses
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     [BepInProcess("valheim.exe")]
-    //[NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
+    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class WardMod : BaseUnityPlugin
     {
         public const string PluginGUID = "torky.Ward";
         public const string PluginName = "Ward";
-        public const string PluginVersion = "0.1.0";
+        public const string PluginVersion = "0.2.0";
 
         public static string ModLocation = Path.GetDirectoryName(typeof(WardMod).Assembly.Location);
 

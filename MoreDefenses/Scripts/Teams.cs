@@ -20,7 +20,7 @@ namespace MoreDefenses.Scripts
         public static bool IsSameTeam(string player1, string player2)
         {
             var isSameTeam = GetPlayerTeam(player1) == GetPlayerTeam(player2);
-            Jotunn.Logger.LogInfo(isSameTeam + "=>" + player1 + ":" + GetPlayerTeam(player1) + "-" + player2 + ":" + GetPlayerTeam(player2));
+            // Jotunn.Logger.LogInfo(isSameTeam + "=>" + player1 + ":" + GetPlayerTeam(player1) + "-" + player2 + ":" + GetPlayerTeam(player2));
             return isSameTeam;
         }
 

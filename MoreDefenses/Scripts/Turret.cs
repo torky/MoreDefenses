@@ -237,11 +237,12 @@ public class Turret : MonoBehaviour, Hoverable, Interactable
         List<Character> allCharacters = Character.GetAllCharacters();
         foreach (Character character in allCharacters)
         {
+            if (character == null) continue;
             var isPlayer = character.m_faction == Character.Faction.Players;
             var isViablePlayerTarget = false;
             if (isPlayer)
             {
-                Jotunn.Logger.LogDebug($"Player?! {character.m_name}");
+                // Jotunn.Logger.LogDebug($"Player?! {character.m_name}");
                 Player player = character as Player;
                 Player creator = Player.GetPlayer(m_piece.GetCreator());
 
