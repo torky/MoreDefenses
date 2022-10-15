@@ -240,11 +240,13 @@ public class Turret : MonoBehaviour, Hoverable, Interactable
             if (character == null) continue;
             var isPlayer = character.m_faction == Character.Faction.Players;
             var isViablePlayerTarget = false;
+            Player player = null;
+            Player creator = null;
             if (isPlayer)
             {
                 // Jotunn.Logger.LogDebug($"Player?! {character.m_name}");
-                Player player = character as Player;
-                Player creator = Player.GetPlayer(m_piece.GetCreator());
+                player = character as Player;
+                creator = Player.GetPlayer(m_piece.GetCreator());
 
                 bool isPermitted = IsPermitted(player.GetPlayerID());
                 bool isCreator = player.GetPlayerID() == m_piece.GetCreator();
@@ -260,7 +262,12 @@ public class Turret : MonoBehaviour, Hoverable, Interactable
                 && CanSeeCharacter(character)
                 && IsEnabled()
             ) {
+                // logging
                 Jotunn.Logger.LogDebug($"Target changed to {character.m_name}");
+                if (player != null && creator != null)
+                {
+                    Jotunn.Logger.LogDebug($"{isViablePlayerTarget}:{Teams.GetPlayerTeam(player.GetPlayerName())}-{player.GetPlayerName()}:{Teams.GetPlayerTeam(creator.GetPlayerName())}-{creator.GetPlayerName()}");
+                }
                 m_target = character;
                 if (IsContinuous) m_nview.InvokeRPC(ZNetView.Everybody, "Fire", m_target.transform.position);
                 yield break;

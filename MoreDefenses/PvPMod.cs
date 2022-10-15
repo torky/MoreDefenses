@@ -18,7 +18,6 @@ using MoreDefenses.Scripts;
 namespace MoreDefenses
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-    [BepInProcess("valheim.exe")]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class PvPMod : BaseUnityPlugin
     {
@@ -94,7 +93,7 @@ namespace MoreDefenses
 
             static void Postfix(HitData hit)
             {
-                Jotunn.Logger.LogDebug("TotalDmg:" + hit.GetTotalDamage() + ", TotalPhys:" + hit.GetTotalPhysicalDamage() + ", TotalBlockable: " + hit.GetTotalBlockableDamage());
+                Jotunn.Logger.LogDebug("TotalDmg:" + hit.GetTotalDamage() + ", TotalPhys:" + hit.GetTotalPhysicalDamage() + ", TotalBlockable:" + hit.GetTotalBlockableDamage());
             }
         }
     }

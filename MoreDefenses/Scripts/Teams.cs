@@ -9,8 +9,10 @@ namespace MoreDefenses.Scripts
         static readonly Dictionary<string, int> playerToTeam = new Dictionary<string, int>
         {
             { "torkynight", 1 },
+            { "torky***ht", 1 },
             { "tutorialtorky", 1 },
             { "frostyy", 1 },
+            { "frosty test", 1 },
             { "joking", 1 },
             { "daboss", 1 },
             { "dabeast", 2 },

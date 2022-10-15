@@ -18,7 +18,6 @@ using MoreDefenses.Scripts;
 namespace MoreDefenses
 {
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
-    [BepInProcess("valheim.exe")]
     [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Minor)]
     internal class WardMod : BaseUnityPlugin
     {
